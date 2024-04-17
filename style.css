@@ -3,13 +3,24 @@ body {
 }
 #container {
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
+    align-items: center;
+}
+
+#squareContainer {
+    display: flex;
     flex-wrap: wrap;
-    width: 500px;
+    width: 960px;
+    align-items: center;
+    justify-content: center;
+}
+.rows {
+    height: 960px;
 }
 .square {
-    width: 20px;
-    height: 20px;
+    width: 8px;
+    height: 8px;
     background-color: white;
-    border: solid 1px;
+    /*border: solid 1px;*/
 }
