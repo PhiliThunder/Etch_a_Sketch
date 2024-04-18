@@ -7,6 +7,19 @@ function boardPrompt() {
         size = 100;
     }
     generateBoard(size);
+    squareSizer(size);
+}
+//Scales up squares to fill container
+function squareSizer(size) {
+    const squareStyle = document.querySelectorAll(".square");
+    const squareSize = 960 / size;
+    const squareSizeString = squareSize + "px";
+    console.log(squareSizeString);
+    squareStyle.forEach(pixel => {
+        pixel.style.width = squareSizeString;
+        pixel.style.height = squareSizeString;
+        console.log(pixel.style.width);
+    })
 }
 const squareContainer = document.querySelector("#squareContainer");
 //Generates rows and squares within squareContainer in quantity from prompt
@@ -23,7 +36,7 @@ function generateBoard(size) {
         }
     }
     //Assign pixels as all squares after generation
-    let pixels = document.querySelectorAll(".square");
+    const pixels = document.querySelectorAll(".square");
     pixelAssignment(pixels);
 }
 function clearBoard() {
