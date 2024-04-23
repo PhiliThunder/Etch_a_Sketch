@@ -1,3 +1,4 @@
+const CONTAINER_WIDTH = 960; //px
 //New board button
 const createBoard = document.querySelector("#createBoard");
 createBoard.addEventListener("click", boardPrompt);
@@ -5,6 +6,7 @@ function boardPrompt() {
     let size = prompt("How many squares wide and tall do you want the board? (Maximum 100)");
     if (size > 100) {
         size = 100;
+        alert("The size was set to the maximum 100");
     }
     generateBoard(size);
     squareSizer(size);
@@ -12,13 +14,11 @@ function boardPrompt() {
 //Scales up squares to fill container
 function squareSizer(size) {
     const squareStyle = document.querySelectorAll(".square");
-    const squareSize = 960 / size;
+    let squareSize = CONTAINER_WIDTH / size;
     const squareSizeString = squareSize + "px";
-    console.log(squareSizeString);
     squareStyle.forEach(pixel => {
         pixel.style.width = squareSizeString;
         pixel.style.height = squareSizeString;
-        console.log(pixel.style.width);
     })
 }
 const squareContainer = document.querySelector("#squareContainer");
@@ -35,7 +35,7 @@ function generateBoard(size) {
             rows.appendChild(square);
         }
     }
-    //Assign pixels as all squares after generation
+    //Assign pixels as all squares to be paintable after generation
     const pixels = document.querySelectorAll(".square");
     pixelAssignment(pixels);
 }

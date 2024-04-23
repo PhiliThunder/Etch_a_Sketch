@@ -3,14 +3,20 @@ body {
 }
 #container {
     display: flex;
-    flex-direction: column;
     margin: 0 auto;
     align-items: center;
+    justify-content: center;
+    height: 960px;
 }
-
+#buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 8px;
+    height: 960px;
+}
 #squareContainer {
     display: flex;
-    flex-wrap: wrap;
     width: 960px;
     align-items: center;
     justify-content: center;
@@ -21,4 +27,8 @@ body {
 .square {
     background-color: white;
     /*border: solid 1px;*/
+}
+button {
+    font-size: 36px;
+    padding: 8px;
 }
