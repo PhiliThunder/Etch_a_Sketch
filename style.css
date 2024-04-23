@@ -20,13 +20,13 @@ body {
     width: 960px;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
 .rows {
     height: 960px;
 }
 .square {
     background-color: white;
-    /*border: solid 1px;*/
 }
 button {
     font-size: 36px;

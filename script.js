@@ -6,7 +6,7 @@ function boardPrompt() {
     let size = prompt("How many squares wide and tall do you want the board? (Maximum 100)");
     if (size > 100) {
         size = 100;
-        alert("The size was set to the maximum 100");
+        alert("The size was set to the maximum: 100");
     }
     generateBoard(size);
     squareSizer(size);
@@ -36,8 +36,7 @@ function generateBoard(size) {
         }
     }
     //Assign pixels as all squares to be paintable after generation
-    const pixels = document.querySelectorAll(".square");
-    pixelAssignment(pixels);
+    pixelAssignment();
 }
 function clearBoard() {
     const rows = document.querySelectorAll(".rows");
@@ -45,15 +44,31 @@ function clearBoard() {
         row.remove();
     });
 }
-
 //Adds color change on hover for all pixels
-function pixelAssignment(pixels) {
+function pixelAssignment() {
+    const pixels = document.querySelectorAll(".square");
     pixels.forEach(pixel => {
-    pixel.addEventListener("mouseenter", sketch);
+        pixel.addEventListener("mouseenter", sketch);
     });
 }
-
 function sketch(event) {
-    const targetElement = event.target;
-    targetElement.style.backgroundColor = "black";
+    const sketchSquare = event.target;
+    sketchSquare.style.backgroundColor = "black";
+}
+//Darkening mode
+const darkenButton = document.querySelector("#darkening");
+darkenButton.addEventListener("click", darkeningStart);
+function darkeningStart() {
+    const pixels = document.querySelectorAll(".square");
+    pixels.forEach(pixel => {
+        pixel.addEventListener("mouseenter", darken);
+        pixel.style.backgroundColor = "black";
+        pixel.style.opacity = 0;
+    })
+}
+function darken(event) {
+    const darkenSquare = event.target;
+    let currentOpacity = parseFloat(darkenSquare.style.opacity); //Has to be parsed to Float as .style.opacity returns a string
+    currentOpacity += 0.1;
+    darkenSquare.style.opacity = currentOpacity.toString(); //Back to being a string here
 }
